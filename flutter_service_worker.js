@@ -4,11 +4,11 @@ const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
   "version.json": "c2a08cda2a1e690bfed5ce9fc4d9e5b1",
-"index.html": "66ef7bc9a22db98347d785cc3e720f67",
-"/": "66ef7bc9a22db98347d785cc3e720f67",
-"main.dart.js": "bb52b31869f55dc65763c0c10f42a72a",
+"index.html": "f10f1bc24a31391a059b47a82c041f57",
+"/": "f10f1bc24a31391a059b47a82c041f57",
+"main.dart.js": "4113d2c1ea5e6d9284c9505f33cce752",
 "flutter.js": "a85fcf6324d3c4d3ae3be1ae4931e9c5",
-"assets/AssetManifest.json": "9ad656f7ac7ca4fbcfd057ae71c0c5ae",
+"assets/AssetManifest.json": "6df0a48c08f795d80bb454727a280560",
 "assets/NOTICES": "006c10cc4eb5671f1d8a58cffcb65a8f",
 "assets/FontManifest.json": "dc3d03800ccca4601324923c0b1d6d57",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
@@ -30,6 +30,7 @@ const RESOURCES = {
 "assets/assets/icons/gmail.svg": "fa91d2714f4922e190212ec92105c9a2",
 "assets/assets/icons/download.json": "d0c37fd4bf91cfe20aaa019fda77d9db",
 "assets/assets/icons/whatsapp.svg": "3785fbaf4dfdd6c10dd0dd03377236c5",
+"assets/assets/icons/phone.svg": "d778379657a79bc31179a5c20d60d303",
 "assets/assets/icons/handshake_icon.json": "83ffab6fc2e2fec55f5b695c86220caf",
 "canvaskit/canvaskit.js": "97937cb4c2c2073c968525a3e08c86a3",
 "canvaskit/profiling/canvaskit.js": "c21852696bc1cc82e8894d851c01921a",
