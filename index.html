@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Abhishek Kumar — Senior Flutter Engineer</title>
+  <meta name="description" content="Senior Flutter Engineer and Technical Lead. 12+ years building production mobile and AI systems. Writing about Flutter, Clean Architecture on Medium."/>
+  <meta name="author" content="Abhishek Kumar"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --cream:   #F7F2E9;
+      --cream2:  #EDE7D9;
+      --cream3:  #E0D8C8;
+      --rust:    #B85C38;
+      --rust2:   #8F4228;
+      --rust-lt: #F2E4DC;
+      --char:    #1E1916;
+      --warm-dk: #3D3530;
+      --warm-md: #6B6058;
+      --warm-lt: #9E9489;
+      --border:  #D8D0C4;
+      --card:    #FBF8F3;
+      --white:   #FFFDF9;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--char); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--cream2); }
+    ::-webkit-scrollbar-thumb { background: var(--rust); border-radius: 2px; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 5rem; background: rgba(247,242,233,0.93); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); transition: box-shadow 0.3s; }
+    .nav-logo { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; color: var(--char); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-logo em { color: var(--rust); font-style: italic; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { color: var(--warm-md); text-decoration: none; font-size: 0.88rem; font-weight: 400; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--rust); }
+    .nav-cta { background: var(--char); color: var(--cream); padding: 0.55rem 1.3rem; border-radius: 100px; font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--rust); }
+
+    /* LAYOUT */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 5rem; }
+    section { padding: 7rem 0; }
+    .slabel { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--rust); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+    .slabel::before { content: ''; display: block; width: 20px; height: 1px; background: var(--rust); }
+    h2.stitle { font-family: 'Fraunces', serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 600; color: var(--char); line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 3rem; }
+
+    /* HERO */
+    #hero { min-height: 100vh; display: flex; align-items: center; padding-top: 6rem; border-bottom: 1px solid var(--border); }
+    .hero-grid { display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: end; width: 100%; }
+    .hero-greeting { font-family: 'DM Mono', monospace; font-size: 0.8rem; color: var(--rust); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.5rem; opacity: 0; animation: up 0.7s ease 0.1s forwards; }
+    .hero-name { font-family: 'Fraunces', serif; font-size: clamp(3.5rem, 7vw, 6rem); font-weight: 700; line-height: 0.95; letter-spacing: -0.03em; color: var(--char); margin-bottom: 1.5rem; opacity: 0; animation: up 0.7s ease 0.25s forwards; }
+    .hero-name em { font-style: italic; color: var(--rust); font-weight: 300; }
+    .hero-sub { font-size: 1.05rem; color: var(--warm-md); font-weight: 300; max-width: 500px; line-height: 1.8; margin-bottom: 2rem; opacity: 0; animation: up 0.7s ease 0.4s forwards; }
+    .hero-sub strong { color: var(--char); font-weight: 500; }
+    .hero-btns { display: flex; gap: 1rem; margin-bottom: 3.5rem; opacity: 0; animation: up 0.7s ease 0.55s forwards; }
+    .btn-f { background: var(--char); color: var(--cream); padding: 0.8rem 1.8rem; border-radius: 100px; font-size: 0.9rem; font-weight: 500; text-decoration: none; transition: background 0.2s; }
+    .btn-f:hover { background: var(--rust); }
+    .btn-o { border: 1.5px solid var(--border); color: var(--warm-dk); padding: 0.8rem 1.8rem; border-radius: 100px; font-size: 0.9rem; font-weight: 400; text-decoration: none; transition: all 0.2s; }
+    .btn-o:hover { border-color: var(--rust); color: var(--rust); }
+    .hero-stats { display: flex; gap: 2.5rem; padding-top: 2.5rem; border-top: 1px solid var(--border); opacity: 0; animation: up 0.7s ease 0.7s forwards; flex-wrap: wrap; }
+    .stat-n { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 600; color: var(--char); letter-spacing: -0.03em; line-height: 1; }
+    .stat-n em { color: var(--rust); font-style: normal; }
+    .stat-l { font-size: 0.78rem; color: var(--warm-lt); margin-top: 0.2rem; font-weight: 300; }
+    .hero-tags { display: flex; flex-direction: column; align-items: flex-end; gap: 0.75rem; padding-bottom: 0.5rem; opacity: 0; animation: up 0.7s ease 0.6s forwards; }
+    .htag { background: var(--card); border: 1px solid var(--border); border-radius: 100px; padding: 0.45rem 1rem; font-size: 0.82rem; color: var(--warm-md); white-space: nowrap; }
+    .htag.on { background: var(--rust-lt); border-color: rgba(184,92,56,0.3); color: var(--rust2); font-weight: 500; }
+
+    /* ABOUT */
+    #about { border-bottom: 1px solid var(--border); }
+    .about-g { display: grid; grid-template-columns: 1.2fr 1fr; gap: 6rem; align-items: start; }
+    .about-text p { color: var(--warm-md); margin-bottom: 1.2rem; font-size: 1rem; line-height: 1.9; font-weight: 300; }
+    .about-text p strong { color: var(--char); font-weight: 500; }
+    .about-text p .r { color: var(--rust); }
+    .pull { font-family: 'Fraunces', serif; font-size: 1.35rem; font-weight: 300; font-style: italic; color: var(--warm-dk); border-left: 3px solid var(--rust); padding-left: 1.5rem; margin: 2rem 0; line-height: 1.6; }
+    .facts { display: flex; flex-direction: column; }
+    .fact { padding: 1.2rem 0; border-bottom: 1px solid var(--border); }
+    .fact:first-child { border-top: 1px solid var(--border); }
+    .fact-l { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--warm-lt); letter-spacing: 0.15em; text-transform: uppercase; }
+    .fact-v { font-size: 0.95rem; color: var(--char); font-weight: 500; margin-top: 0.15rem; }
+    .fact-s { font-size: 0.82rem; color: var(--warm-lt); font-weight: 300; }
+
+    /* PROJECTS */
+    #projects { border-bottom: 1px solid var(--border); }
+    .proj-list { display: flex; flex-direction: column; }
+    .proj-row { display: grid; grid-template-columns: 52px 1fr auto; gap: 2rem; align-items: start; padding: 2.5rem 1.5rem; border-bottom: 1px solid var(--border); border-radius: 8px; transition: background 0.2s; }
+    .proj-row:first-child { border-top: 1px solid var(--border); }
+    .proj-row:hover { background: var(--card); }
+    .proj-num { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--warm-lt); padding-top: 0.3rem; }
+    .proj-hdr { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 0.5rem; flex-wrap: wrap; }
+    .proj-name { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 600; color: var(--char); letter-spacing: -0.01em; }
+    .proj-co { font-size: 0.8rem; color: var(--warm-lt); font-weight: 300; }
+    .proj-desc { color: var(--warm-md); font-size: 0.9rem; line-height: 1.8; font-weight: 300; max-width: 600px; margin-bottom: 0.85rem; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .pt { font-family: 'DM Mono', monospace; font-size: 0.68rem; padding: 0.2rem 0.6rem; border-radius: 3px; background: var(--cream2); color: var(--warm-md); border: 1px solid var(--border); }
+    .pt.r { background: var(--rust-lt); color: var(--rust2); border-color: rgba(184,92,56,0.2); }
+    .proj-badge { display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rust); border: 1px solid rgba(184,92,56,0.25); background: var(--rust-lt); border-radius: 3px; padding: 0.25rem 0.6rem; white-space: nowrap; flex-shrink: 0; align-self: flex-start; margin-top: 0.3rem; }
+
+    /* SKILLS */
+    #skills { border-bottom: 1px solid var(--border); }
+    .skills-g { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .sg { padding: 2rem; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); transition: background 0.2s; }
+    .sg:hover { background: var(--white); }
+    .sg:nth-child(3n) { border-right: none; }
+    .sg:nth-child(n+4) { border-bottom: none; }
+    .sg-title { font-size: 0.8rem; font-weight: 500; color: var(--char); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem; }
+    .sg-title::before { content: ''; width: 7px; height: 7px; border-radius: 2px; background: var(--rust); flex-shrink: 0; }
+    .si { font-size: 0.88rem; color: var(--warm-md); font-weight: 300; padding: 0.3rem 0; border-bottom: 1px solid var(--cream3); }
+    .si:last-child { border-bottom: none; }
+
+    /* EXPERIENCE */
+    #experience { border-bottom: 1px solid var(--border); }
+    .exp-list { display: flex; flex-direction: column; }
+    .exp-item { display: grid; grid-template-columns: 190px 1fr; gap: 3rem; padding: 2.5rem 0; border-bottom: 1px solid var(--border); }
+    .exp-item:first-child { border-top: 1px solid var(--border); }
+    .exp-period { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--warm-lt); line-height: 1.7; margin-bottom: 0.3rem; }
+    .exp-loc { font-size: 0.78rem; color: var(--warm-lt); font-weight: 300; }
+    .exp-co { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--rust); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.25rem; }
+    .exp-role { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 600; color: var(--char); margin-bottom: 1rem; letter-spacing: -0.01em; }
+    .exp-pts { list-style: none; margin-bottom: 1rem; }
+    .exp-pts li { color: var(--warm-md); font-size: 0.88rem; line-height: 1.85; padding-left: 1rem; position: relative; font-weight: 300; }
+    .exp-pts li::before { content: '–'; position: absolute; left: 0; color: var(--rust); }
+    .exp-pts li strong { color: var(--char); font-weight: 500; }
+    .exp-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .et { font-family: 'DM Mono', monospace; font-size: 0.68rem; padding: 0.2rem 0.55rem; border-radius: 3px; background: var(--cream2); color: var(--warm-md); border: 1px solid var(--border); }
+
+    /* WRITING */
+    #writing { border-bottom: 1px solid var(--border); }
+    .writing-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+    .writing-top p { color: var(--warm-md); font-size: 0.95rem; font-weight: 300; max-width: 460px; line-height: 1.8; margin-top: 0.5rem; }
+    .med-link { display: flex; align-items: center; gap: 0.6rem; padding: 0.65rem 1.2rem; border: 1.5px solid var(--border); border-radius: 100px; text-decoration: none; color: var(--warm-dk); font-size: 0.85rem; font-weight: 500; transition: all 0.2s; white-space: nowrap; }
+    .med-link:hover { border-color: var(--rust); color: var(--rust); }
+    .med-link .mi { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 700; font-style: italic; }
+    .series-box { background: var(--rust-lt); border: 1px solid rgba(184,92,56,0.18); border-radius: 10px; padding: 1.75rem 2rem; margin-bottom: 1.25rem; }
+    .series-lbl { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--rust); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .series-ttl { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; color: var(--char); margin-bottom: 0.35rem; letter-spacing: -0.01em; }
+    .series-dsc { font-size: 0.85rem; color: var(--warm-md); font-weight: 300; margin-bottom: 1.1rem; }
+    .posts { display: flex; flex-direction: column; }
+    .post-link { display: flex; align-items: baseline; gap: 0.75rem; padding: 0.55rem 0; border-bottom: 1px solid rgba(184,92,56,0.1); text-decoration: none; color: var(--warm-dk); transition: color 0.15s; }
+    .post-link:last-child { border-bottom: none; }
+    .post-link:hover { color: var(--rust); }
+    .post-link:hover .pa { opacity: 1; }
+    .pn { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--rust); opacity: 0.6; flex-shrink: 0; width: 22px; }
+    .ptitle { font-size: 0.88rem; font-weight: 400; flex: 1; }
+    .pa { font-size: 0.8rem; color: var(--rust); opacity: 0; transition: opacity 0.15s; }
+    .solo-box { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem 1.75rem; }
+    .solo-row { display: flex; align-items: center; gap: 1rem; text-decoration: none; color: var(--char); transition: color 0.15s; }
+    .solo-row:hover { color: var(--rust); }
+    .solo-ico { width: 34px; height: 34px; border-radius: 6px; background: var(--cream2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0; }
+    .solo-meta { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--warm-lt); margin-bottom: 0.15rem; }
+    .solo-ttl { font-size: 0.9rem; font-weight: 500; }
+
+    /* CONTACT */
+    #contact {}
+    .contact-g { display: grid; grid-template-columns: 1.2fr 1fr; gap: 6rem; align-items: start; }
+    .contact-h { font-family: 'Fraunces', serif; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 1.25rem; color: var(--char); }
+    .contact-h em { color: var(--rust); font-style: italic; font-weight: 300; }
+    .contact-intro { color: var(--warm-md); font-size: 0.95rem; font-weight: 300; line-height: 1.9; margin-bottom: 2rem; }
+    .clinks { display: flex; flex-direction: column; }
+    .clink { display: flex; align-items: center; gap: 1.25rem; padding: 1.2rem 0; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--char); transition: color 0.2s; }
+    .clink:first-child { border-top: 1px solid var(--border); }
+    .clink:hover { color: var(--rust); }
+    .clink:hover .carrow { transform: translate(3px,-3px); }
+    .cico { width: 36px; height: 36px; border-radius: 7px; background: var(--cream2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--warm-md); flex-shrink: 0; }
+    .clabel { font-size: 0.72rem; color: var(--warm-lt); font-weight: 300; margin-bottom: 0.1rem; }
+    .cval { font-size: 0.9rem; font-weight: 500; }
+    .carrow { font-size: 0.9rem; color: var(--warm-lt); transition: transform 0.2s; margin-left: auto; }
+    .ccard { background: var(--char); color: var(--cream); border-radius: 12px; padding: 2.5rem; }
+    .ccard-lbl { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: rgba(247,242,233,0.4); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem; }
+    .ccard-h { font-family: 'Fraunces', serif; font-size: 1.35rem; font-weight: 600; margin-bottom: 0.75rem; line-height: 1.4; letter-spacing: -0.01em; }
+    .ccard-h em { color: #C4775A; font-style: italic; font-weight: 300; }
+    .ccard p { font-size: 0.88rem; color: rgba(247,242,233,0.5); font-weight: 300; line-height: 1.8; margin-bottom: 1.75rem; }
+    .roles { display: flex; flex-direction: column; gap: 0.5rem; }
+    .rpill { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.85rem; background: rgba(247,242,233,0.05); border: 1px solid rgba(247,242,233,0.1); border-radius: 6px; font-size: 0.82rem; color: rgba(247,242,233,0.65); }
+    .rpill::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #C4775A; flex-shrink: 0; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 2rem 0; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; }
+    footer p { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--warm-lt); }
+    footer p span { color: var(--rust); }
+
+    /* ANIMATIONS */
+    @keyframes up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .wrap { padding: 0 1.5rem; }
+      section { padding: 5rem 0; }
+      .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-tags { flex-direction: row; flex-wrap: wrap; align-items: flex-start; }
+      .about-g, .contact-g { grid-template-columns: 1fr; gap: 2.5rem; }
+      .skills-g { grid-template-columns: 1fr 1fr; }
+      .sg:nth-child(3n) { border-right: 1px solid var(--border); }
+      .sg:nth-child(2n) { border-right: none; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.75rem; }
+      .proj-row { grid-template-columns: 40px 1fr; }
+      .proj-badge { display: none; }
+      .footer-inner { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+    @media (max-width: 580px) {
+      .hero-name { font-size: 3rem; }
+      .skills-g { grid-template-columns: 1fr; }
+      .sg:nth-child(2n) { border-right: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="nav-logo" href="#hero">Abhishek <em>Kumar</em></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#writing">Writing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:avi.kr16@gmail.com" class="nav-cta">Say hello</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="hero-greeting">Senior Flutter Engineer &amp; Technical Lead</p>
+        <h1 class="hero-name">Building things<br/>that <em>actually</em><br/>ship.</h1>
+        <p class="hero-sub"><strong>12+ years</strong> delivering production mobile and AI systems. Currently leading Flutter development for a platform serving U.S. military across 30+ countries. I also write about Flutter and Clean Architecture on Medium.</p>
+        <div class="hero-btns">
+          <a href="#projects" class="btn-f">See my work</a>
+          <a href="#writing" class="btn-o">Read my writing</a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="stat-n">12<em>+</em></div><div class="stat-l">Years shipping</div></div>
+          <div><div class="stat-n">30<em>+</em></div><div class="stat-l">Countries reached</div></div>
+          <div><div class="stat-n">9</div><div class="stat-l">Articles on Medium</div></div>
+          <div><div class="stat-n">94</div><div class="stat-l">Medium followers</div></div>
+        </div>
+      </div>
+      <div class="hero-tags">
+        <span class="htag on">Flutter · Dart</span>
+        <span class="htag">Android · iOS</span>
+        <span class="htag">AI / LLM · CrewAI</span>
+        <span class="htag">Node.js</span>
+        <span class="htag">Headless Commerce</span>
+        <span class="htag">Clean Architecture</span>
+        <span class="htag">M.Tech · BITS Pilani</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-g">
+      <div class="reveal">
+        <p class="slabel">About</p>
+        <h2 class="stitle">Engineer, writer,<br/>problem-solver.</h2>
+        <p>I'm a <strong>Senior Flutter Engineer and Technical Lead</strong> based in Mumbai, operating at Associate Lead level within Logixal Cloud Solutions — owning the Flutter mobile domain across complex, real-world programmes.</p>
+        <blockquote class="pull">"I don't just write code. I explain it, teach it, and make the people around me better at it."</blockquote>
+        <p>My career spans the full arc of mobile — from early <strong>Android/Java</strong> through <strong>cross-platform Flutter</strong> and now into <span class="r">AI multi-agent systems</span>. I enjoy that each phase has been genuinely new territory.</p>
+        <p>Outside of work I write a <strong>Flutter architecture series on Medium</strong> — 9 posts on Clean Architecture, BLoC, TDD, and Git, told through the metaphor of Naruto's ninja world. 94 followers and growing. Teaching forces clarity, and clarity makes you a better engineer.</p>
+      </div>
+      <div class="facts reveal">
+        <div class="fact"><div class="fact-l">Current role</div><div class="fact-v">Associate Technical Lead</div><div class="fact-s">Logixal Cloud Solutions · Mumbai</div></div>
+        <div class="fact"><div class="fact-l">Education</div><div class="fact-v">M.Tech · BITS Pilani</div><div class="fact-s">B.Tech · AKTU · 2014</div></div>
+        <div class="fact"><div class="fact-l">Current product</div><div class="fact-v">AAFES – Shop My Exchange</div><div class="fact-s">Global military retail · 30+ countries</div></div>
+        <div class="fact"><div class="fact-l">Side project</div><div class="fact-v">CrewAI Multi-Agent System</div><div class="fact-s">4 agents · LM Studio · Qwen2.5-Coder</div></div>
+        <div class="fact"><div class="fact-l">Writing</div><div class="fact-v">9 articles on Medium</div><div class="fact-s">Flutter Clean Architecture series · 94 followers</div></div>
+        <div class="fact"><div class="fact-l">Certification</div><div class="fact-v">AWS Cloud Practitioner</div><div class="fact-s">In progress · 2025</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <p class="slabel reveal">Projects</p>
+    <h2 class="stitle reveal">Things I've shipped.</h2>
+    <div class="proj-list">
+
+      <div class="proj-row reveal">
+        <div class="proj-num">01</div>
+        <div>
+          <div class="proj-hdr"><span class="proj-name">AAFES – Shop My Exchange</span><span class="proj-co">Logixal · 2025–present</span></div>
+          <p class="proj-desc">Global military retail e-commerce platform. Leading Flutter mobile delivery — architecture, feature releases, and Monetate AI analytics for real-time purchase event tracking across marketplace orders.</p>
+          <div class="proj-tags"><span class="pt r">Flutter</span><span class="pt r">Monetate</span><span class="pt r">Frontastic</span><span class="pt">Node.js</span><span class="pt">TypeScript</span><span class="pt">REST APIs</span></div>
+        </div>
+        <span class="proj-badge">Featured</span>
+      </div>
+
+      <div class="proj-row reveal">
+        <div class="proj-num">02</div>
+        <div>
+          <div class="proj-hdr"><span class="proj-name">CrewAI Multi-Agent System</span><span class="proj-co">Personal · 2024–present</span></div>
+          <p class="proj-desc">4-agent automation pipeline for job search — discovery, resume tailoring, cover letters, application tracking. Runs fully offline on a local Qwen2.5-Coder-3B via LM Studio.</p>
+          <div class="proj-tags"><span class="pt r">Python</span><span class="pt r">CrewAI</span><span class="pt r">LM Studio</span><span class="pt">Qwen2.5</span><span class="pt">Prompt Engineering</span></div>
+        </div>
+        <span class="proj-badge">AI</span>
+      </div>
+
+      <div class="proj-row reveal">
+        <div class="proj-num">03</div>
+        <div>
+          <div class="proj-hdr"><span class="proj-name">BankSocial</span><span class="proj-co">Logixal · 2024–2025</span></div>
+          <p class="proj-desc">Blockchain-powered social banking platform. Led Flutter mobile development integrating DeFi features with a social layer across iOS and Android.</p>
+          <div class="proj-tags"><span class="pt r">Flutter</span><span class="pt">Blockchain</span><span class="pt">DeFi</span><span class="pt">iOS · Android</span></div>
+        </div>
+        <span class="proj-badge">Fintech</span>
+      </div>
+
+      <div class="proj-row reveal">
+        <div class="proj-num">04</div>
+        <div>
+          <div class="proj-hdr"><span class="proj-name">VMock – Career Intelligence Platform</span><span class="proj-co">VMock · 2018–2023</span></div>
+          <p class="proj-desc">AI-powered career platform used by top global business schools. Built Flutter mobile apps for resume analysis, mock interviews, job matching — integrated with Django and real-time analytics.</p>
+          <div class="proj-tags"><span class="pt r">Flutter</span><span class="pt">Android</span><span class="pt">Django</span><span class="pt">AI Analytics</span></div>
+        </div>
+        <span class="proj-badge">EdTech</span>
+      </div>
+
+      <div class="proj-row reveal">
+        <div class="proj-num">05</div>
+        <div>
+          <div class="proj-hdr"><span class="proj-name">ClicFlyer</span><span class="proj-co">Logixal · 2023–2024</span></div>
+          <p class="proj-desc">Retail promotions platform. Architected offline-first Flutter app handling high-volume promotional content with push notifications and deep linking.</p>
+          <div class="proj-tags"><span class="pt r">Flutter</span><span class="pt">Firebase</span><span class="pt">Offline-first</span><span class="pt">Push Notifications</span></div>
+        </div>
+        <span class="proj-badge">Retail</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <p class="slabel reveal">Skills</p>
+    <h2 class="stitle reveal">The full stack.</h2>
+    <div class="skills-g reveal">
+      <div class="sg"><div class="sg-title">Mobile</div><div class="si">Flutter &amp; Dart</div><div class="si">Android — Java / Kotlin</div><div class="si">iOS — Swift</div><div class="si">Cross-platform Architecture</div><div class="si">App Store &amp; Play Store</div><div class="si">CI/CD for Mobile</div></div>
+      <div class="sg"><div class="sg-title">AI / LLM</div><div class="si">CrewAI Multi-Agent Systems</div><div class="si">LM Studio — Local Inference</div><div class="si">Prompt Engineering</div><div class="si">Qwen2.5 / Open-source LLMs</div><div class="si">Monetate AI Analytics</div><div class="si">Agent Workflow Design</div></div>
+      <div class="sg"><div class="sg-title">E-Commerce</div><div class="si">Frontastic Headless CMS</div><div class="si">AAFES / Shop My Exchange</div><div class="si">Monetate Integration</div><div class="si">REST API Design</div><div class="si">Marketplace Order Flows</div><div class="si">Product Catalog Sync</div></div>
+      <div class="sg"><div class="sg-title">Backend &amp; Web</div><div class="si">Node.js</div><div class="si">TypeScript</div><div class="si">REST APIs</div><div class="si">Django — Python</div><div class="si">Firebase</div><div class="si">GraphQL</div></div>
+      <div class="sg"><div class="sg-title">Tooling</div><div class="si">Git &amp; GitHub</div><div class="si">Android Studio &amp; VS Code</div><div class="si">Xcode</div><div class="si">JIRA &amp; Agile / Scrum</div><div class="si">Postman / curl</div><div class="si">AWS — in progress</div></div>
+      <div class="sg"><div class="sg-title">Leadership</div><div class="si">Technical Team Leadership</div><div class="si">Code Review &amp; Mentoring</div><div class="si">Architecture Decisions</div><div class="si">Sprint Planning &amp; Delivery</div><div class="si">Cross-functional Collaboration</div><div class="si">Technical Writing</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <p class="slabel reveal">Experience</p>
+    <h2 class="stitle reveal">12 years of building.</h2>
+    <div class="exp-list">
+
+      <div class="exp-item reveal">
+        <div><div class="exp-period">Feb 2025 → Present</div><div class="exp-loc">Mumbai, India</div></div>
+        <div><div class="exp-co">Logixal Cloud Solutions</div><div class="exp-role">Senior Flutter Engineer &amp; Technical Lead</div>
+          <ul class="exp-pts"><li>Leading Flutter delivery for <strong>AAFES – Shop My Exchange</strong>, serving U.S. military across 30+ countries</li><li>Integrated <strong>Monetate AI analytics</strong> for real-time purchase event tracking across marketplace orders</li><li>Built Node.js backend integrations for order processing and catalog sync across mobile and Frontastic web</li><li>Conducting code reviews and mentoring developers within the mobile workstream</li></ul>
+          <div class="exp-tags"><span class="et">Flutter</span><span class="et">Monetate</span><span class="et">Frontastic</span><span class="et">Node.js</span><span class="et">TypeScript</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div><div class="exp-period">Nov 2024 → Feb 2025</div><div class="exp-loc">Remote</div></div>
+        <div><div class="exp-co">Logixal Cloud Solutions</div><div class="exp-role">Flutter Lead — BankSocial</div>
+          <ul class="exp-pts"><li>Led Flutter development for a <strong>blockchain-powered social banking platform</strong></li><li>Delivered cross-platform iOS and Android with DeFi feature integration</li><li>Managed mobile release cycles in coordination with backend blockchain team</li></ul>
+          <div class="exp-tags"><span class="et">Flutter</span><span class="et">Blockchain</span><span class="et">DeFi</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div><div class="exp-period">Jan 2023 → Jul 2024</div><div class="exp-loc">Mumbai, India</div></div>
+        <div><div class="exp-co">Logixal Cloud Solutions</div><div class="exp-role">Flutter Lead — ClicFlyer</div>
+          <ul class="exp-pts"><li>Architected offline-first Flutter app for a <strong>high-volume retail promotions platform</strong></li><li>Implemented push notification system and deep linking for promotional campaigns</li><li>Delivered complex state management patterns across a cross-platform codebase</li></ul>
+          <div class="exp-tags"><span class="et">Flutter</span><span class="et">Firebase</span><span class="et">Offline-first</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div><div class="exp-period">Sept 2018 → Jan 2023</div><div class="exp-loc">Delhi, India</div></div>
+        <div><div class="exp-co">VMock</div><div class="exp-role">Senior Flutter Engineer</div>
+          <ul class="exp-pts"><li>Built Flutter mobile apps for an <strong>AI-powered career platform</strong> used by top global business schools</li><li>Integrated real-time analytics and Django backend for resume scoring and mock interviews</li><li>Delivered VMock Scrubber — an intelligent resume analysis tool used by MBA students worldwide</li></ul>
+          <div class="exp-tags"><span class="et">Flutter</span><span class="et">Android</span><span class="et">Django</span><span class="et">Kotlin</span></div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div><div class="exp-period">May 2017 → Sept 2018</div><div class="exp-loc">Delhi, India</div></div>
+        <div><div class="exp-co">Early Career</div><div class="exp-role">Android / Mobile Developer</div>
+          <ul class="exp-pts"><li>Shipped <strong>Easy Parking India</strong> — Android/iOS with Google Maps, real-time slot booking, and payment gateway</li><li>Completed M.Tech at BITS Pilani (2017–2019) while building production mobile applications</li></ul>
+          <div class="exp-tags"><span class="et">Android</span><span class="et">Java</span><span class="et">iOS</span><span class="et">Google Maps</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WRITING -->
+<section id="writing">
+  <div class="wrap">
+    <div class="writing-top reveal">
+      <div>
+        <p class="slabel">Writing</p>
+        <h2 class="stitle" style="margin-bottom:0.6rem;">I write about Flutter.</h2>
+        <p>A 9-part series on Clean Architecture, BLoC, TDD, Git and more — taught through the world of Naruto's ninja village. Because good metaphors stick.</p>
+      </div>
+      <a href="https://medium.com/@avi_kr16" target="_blank" rel="noopener" class="med-link"><span class="mi">M</span> View on Medium</a>
+    </div>
+
+    <div class="series-box reveal">
+      <div class="series-lbl">Series · 9 posts · June–July 2025</div>
+      <div class="series-ttl">Flutter Clean Architecture — The Ninja Village Way</div>
+      <div class="series-dsc">From "What is Clean Architecture?" to a fully working To-Do app — every layer, pattern, and practice.</div>
+      <div class="posts">
+        <a href="https://medium.com/@avi_kr16/blog-post-1-unveiling-the-blueprint-what-is-clean-architecture-like-building-a-ninja-village-7552598a5c62" target="_blank" rel="noopener" class="post-link"><span class="pn">01</span><span class="ptitle">Unveiling the Blueprint — What is Clean Architecture?</span><span class="pa">↗</span></a>
+        <a href="https://medium.com/@avi_kr16/blog-post-2-the-heart-of-the-village-understanding-the-domain-layer-entities-use-cases-3ba821898936" target="_blank" rel="noopener" class="post-link"><span class="pn">02</span><span class="ptitle">The Heart of the Village — Domain Layer, Entities &amp; Use Cases</span><span class="pa">↗</span></a>
+        <a href="https://medium.com/@avi_kr16/blog-post-3-the-village-archives-mission-control-the-repository-pattern-data-sources-d3e8ed260828" target="_blank" rel="noopener" class="post-link"><span class="pn">03</span><span class="ptitle">The Village Archives — Repository Pattern &amp; Data Sources</span><span class="pa">↗</span></a>
+        <a href="https://medium.com/@avi_kr16/blog-post-4-the-akatsukis-coordination-mastering-dependency-injection-di-4716dba0e4d0" target="_blank" rel="noopener" class="post-link"><span class="pn">04</span><span class="ptitle">The Akatsuki's Coordination — Mastering Dependency Injection</span><span class="pa">↗</span></a>
+        <a href="https://medium.com/@avi_kr16/blog-post-5-the-genin-the-hokages-orders-the-presentation-layer-with-bloc-2c935296b378" target="_blank" rel="noopener" class="post-link"><span class="pn">05</span><span class="ptitle">The Genin &amp; The Hokage's Orders — Presentation Layer with BLoC</span><span class="pa">↗</span></a>
+        <a href="https://medium.com/@avi_kr16/blog-post-6-the-alchemists-experiment-log-test-driven-development-tdd-in-action-f3ecb96ff614" target="_blank" rel="noopener" class="post-link"><span class="pn">06</span><span class="ptitle">The Alchemist's Experiment Log — Test-Driven Development in Action</span><span class="pa">↗</span></a>
+        <a href="https://medium.com/@avi_kr16/blog-post-7-the-shinobis-tools-utility-classes-responsive-design-screenutil-e7567b9a25ef" target="_blank" rel="noopener" class="post-link"><span class="pn">07</span><span class="ptitle">The Shinobi's Tools — Utility Classes &amp; Responsive Design</span><span class="pa">↗</span></a>
+        <a href="https://medium.com/@avi_kr16/blog-post-8-the-military-archives-version-control-with-git-4a90b5763dcc" target="_blank" rel="noopener" class="post-link"><span class="pn">08</span><span class="ptitle">The Military Archives — Version Control with Git</span><span class="pa">↗</span></a>
+        <a href="https://medium.com/@avi_kr16/blog-post-9-bringing-it-all-together-our-to-do-apps-clean-architecture-in-practice-c99b045a9293" target="_blank" rel="noopener" class="post-link"><span class="pn">09</span><span class="ptitle">Bringing It All Together — Clean Architecture in Practice</span><span class="pa">↗</span></a>
+      </div>
+    </div>
+
+    <div class="solo-box reveal">
+      <a href="https://medium.com/@avi_kr16/create-light-waving-layout-in-android-with-in-7-steps-5a2039f8c512" target="_blank" rel="noopener" class="solo-row">
+        <div class="solo-ico">✦</div>
+        <div><div class="solo-meta">Dec 2017 · Android</div><div class="solo-ttl">Create a Light Waving Layout or Loader in Android in 7 Steps</div></div>
+        <span style="color:var(--warm-lt);margin-left:auto;">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-g">
+      <div class="reveal">
+        <p class="slabel">Contact</p>
+        <h2 class="contact-h">Let's talk about<br/>something <em>interesting.</em></h2>
+        <p class="contact-intro">Reach out about Flutter architecture, AI/mobile integration, or just to say hello. I read every message.</p>
+        <div class="clinks">
+          <a href="mailto:avi.kr16@gmail.com" class="clink"><div class="cico">✉</div><div><div class="clabel">Email</div><div class="cval">avi.kr16@gmail.com</div></div><span class="carrow">↗</span></a>
+          <a href="https://linkedin.com/in/abhishek-kumar-74769272" target="_blank" rel="noopener" class="clink"><div class="cico">in</div><div><div class="clabel">LinkedIn</div><div class="cval">abhishek-kumar-74769272</div></div><span class="carrow">↗</span></a>
+          <a href="https://github.com/avi-kr" target="_blank" rel="noopener" class="clink"><div class="cico" style="font-size:0.7rem;">gh</div><div><div class="clabel">GitHub</div><div class="cval">github.com/avi-kr</div></div><span class="carrow">↗</span></a>
+          <a href="https://medium.com/@avi_kr16" target="_blank" rel="noopener" class="clink"><div class="cico" style="font-family:'Fraunces',serif;font-style:italic;font-size:1rem;">M</div><div><div class="clabel">Medium</div><div class="cval">@avi_kr16</div></div><span class="carrow">↗</span></a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="ccard">
+          <div class="ccard-lbl">Roles I'm interested in</div>
+          <div class="ccard-h">Senior roles at <em>product companies</em> with real problems.</div>
+          <p>Teams with high ownership culture, complex real-world systems, and space for technical leadership — not just execution.</p>
+          <div class="roles">
+            <div class="rpill">Senior Flutter Engineer</div>
+            <div class="rpill">Technical Lead — Mobile</div>
+            <div class="rpill">AI / Mobile Integration</div>
+            <div class="rpill">Remote-friendly or Mumbai</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <p>Built by <span>Abhishek Kumar</span> · 2026</p>
+    <p><span>avi-kr</span>.github.io</p>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.boxShadow = window.scrollY > 40 ? '0 2px 20px rgba(30,25,22,0.08)' : 'none';
+  });
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 60); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
